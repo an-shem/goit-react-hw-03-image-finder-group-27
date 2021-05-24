@@ -28,7 +28,7 @@ class App extends Component {
     if (prevState.searchQuery !== this.state.searchQuery) {
       this.handleFetch();
     }
-    if (prevState.gallery !== this.state.gallery) {
+    if (prevState.gallery !== this.state.gallery && prevState.gallery.length !== 0) {
       window.scrollTo({
         top: document.documentElement.scrollHeight,
         behavior: 'smooth',
@@ -68,7 +68,6 @@ class App extends Component {
       .then((gallery) => {
         if (gallery.length === 0) {
           if (stateGallery.length === 0) {
-            // alert('Nothing found');
             notyf.error({
               message: 'Nothing found',
               position: {
@@ -79,7 +78,7 @@ class App extends Component {
             });
             return;
           }
-          // alert('END');
+
           notyf.error({
             message: 'End of image list',
             position: {
@@ -96,6 +95,7 @@ class App extends Component {
       .catch((error) => this.setState({ error }))
       .finally(() =>
         this.setState((prevState) => {
+          console.log('Конец загрузки');
           return { isLoading: false, page: prevState.page + 1 };
         })
       );
