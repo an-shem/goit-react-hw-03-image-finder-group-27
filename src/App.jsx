@@ -95,7 +95,6 @@ class App extends Component {
       .catch((error) => this.setState({ error }))
       .finally(() =>
         this.setState((prevState) => {
-          console.log('Конец загрузки');
           return { isLoading: false, page: prevState.page + 1 };
         })
       );
