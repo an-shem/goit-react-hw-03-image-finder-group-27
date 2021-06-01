@@ -55,10 +55,10 @@ class App extends Component {
     this.handleFetch();
   };
 
-  handleClickImg = (e) => {
-    this.setState({ imgUrl: e.target.dataset.url });
+  handleClickImg = (e, largeImageURL) => {
+    this.setState({ imgUrl: largeImageURL });
     this.toggleModal(e);
-  };
+     };
 
   handleFetch = () => {
     const { searchQuery, page, gallery: stateGallery } = this.state;

@@ -1,21 +1,21 @@
 import PropTypes from 'prop-types';
 
 const ImageGalleryItem = ({ img, alt, onClick }) => {
-  const { id, webformatURL, largeImageURL } = img;
+  const { webformatURL, largeImageURL } = img;
 
   return (
     <li className="ImageGalleryItem">
       <img
         src={webformatURL}
-        data-url={largeImageURL}
-        data-id={id}
         alt={alt}
         className="ImageGalleryItem-image"
-        onClick={onClick}
+        onClick={(e)=>onClick(e,largeImageURL)}
       />
     </li>
   );
 };
+
+
 
 ImageGalleryItem.propTypes = {
   img: PropTypes.shape({
@@ -23,6 +23,6 @@ ImageGalleryItem.propTypes = {
     webformatURL: PropTypes.string,
     largeImageURL: PropTypes.string,
   }),
-};
+}
 
 export default ImageGalleryItem;
